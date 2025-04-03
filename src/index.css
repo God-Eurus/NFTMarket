@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-pink: #ff71ce;
+  --neon-blue: #01cdfe;
+  --neon-green: #05ffa1;
+  --neon-purple: #b967ff;
+  --neon-yellow: #fffb96;
+}
+
+body {
+  background-color: #180018;
+  color: #ffffff;
+
+font-family: 'Poppins', sans-serif;
+
+  /* font-family: 'VT323', monospace; */
+  /* font-family: 'Space Mono', monospace; */
+  /* font-family: 'IBM Plex Mono', monospace; */
+  background-image: 
+    linear-gradient(0deg, transparent 24%, 
+      rgba(255, 113, 206, 0.08) 25%, 
+      rgba(255, 113, 206, 0.08) 26%, 
+      transparent 27%, transparent 74%, 
+      rgba(255, 113, 206, 0.08) 75%, 
+      rgba(255, 113, 206, 0.08) 76%, 
+      transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, 
+      rgba(255, 113, 206, 0.08) 25%, 
+      rgba(255, 113, 206, 0.08) 26%, 
+      transparent 27%, transparent 74%, 
+      rgba(255, 113, 206, 0.08) 75%, 
+      rgba(255, 113, 206, 0.08) 76%, 
+      transparent 77%, transparent);
+  background-size: 60px 60px;
+}
+
+.neon-border {
+  box-shadow: 
+    0 0 8px var(--neon-blue),
+    0 0 16px var(--neon-blue),
+    0 0 24px var(--neon-blue),
+    0 0 32px var(--neon-blue),;
+}
+
+/* NFT Card Styles */
+.nft-card {
+  background: rgba(35, 5, 45, 0.95);
+  border: 2px solid var(--neon-pink);
+  padding: 16px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.nft-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 0 8px var(--neon-blue),
+    0 0 16px var(--neon-blue),
+    0 0 24px var(--neon-blue),;
+}
+
+/* Retro Button */
+.retro-button {
+  background: var(--neon-purple);
+  border: 2px solid var(--neon-yellow);
+  padding: 12px 24px;
+  font-size: 14px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 
+    0 0 6px var(--neon-yellow),
+    0 0 12px var(--neon-yellow);
+  border-radius: 6px;
+}
+
+/* .retro-button:hover:not(:disabled) {
+  background: var(--neon-blue);
+  border-color: var(--neon-green);
+  box-shadow: 
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 30px var(--neon-green);
+  text-shadow: 
+    0 0 6px var(--neon-green),
+    0 0 12px var(--neon-green);
+} */
+
+.retro-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Input Fields */
+input {
+  background: rgba(25, 5, 45, 0.8);
+  border: 2px solid var(--neon-pink);
+  padding: 10px;
+  font-size: 14px;
+  color: var(--neon-green);
+  transition: border-color 0.3s ease;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--neon-purple);
+}
+/* Neon Navbar */
+.neon-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(25, 5, 45, 0.95);
+  border-bottom: 3px solid var(--neon-pink);
+  box-shadow: 0 0 15px var(--neon-pink);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-navbar:hover {
+  box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-pink);
+}
+
+/* Logo */
+.neon-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(pink);
+  text-shadow: 0 0 8px var(pink), 0 0 16px var(pink);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.neon-logo:hover {
+  text-shadow: 0 0 12px var(--neon-blue), 0 0 24px var(--neon-blue);
+}
+
+/* Wallet Button */
+.wallet-button {
+  background: var(--neon-green);
+  color: black;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 10px var(--neon-green);
+  transition: all 0.3s ease-in-out;
+}
+
+.wallet-button:hover {
+  background: var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
+}
