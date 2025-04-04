@@ -12,15 +12,14 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
   const [currentColor, setCurrentColor] = useState('#ff71ce');
   const [history, setHistory] = useState<ImageData[]>([]);
   const [redoStack, setRedoStack] = useState<ImageData[]>([]);
-  
-  const pixelSize = 30; // Increased grid size
+
+  const pixelSize = 30;
   const canvasWidth = width * pixelSize;
   const canvasHeight = height * pixelSize;
 
-  // New color palette (neon + pastels)
   const colors = [
-    '#ff71ce', '#01cdfe', '#05ffa1', '#b967ff', // Neon colors
-    '#fffb96', '#ff9f1c', '#ff4040', '#8b5cf6', // Pastel shades
+    '#ff71ce', '#01cdfe', '#05ffa1', '#b967ff', // Neon
+    '#fffb96', '#ff9f1c', '#ff4040', '#8b5cf6', // Pastel
     '#ffffff', '#000000', '#4a4a4a', '#facc15'  // Essentials
   ];
 
@@ -31,7 +30,7 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    ctx.fillStyle = '#111'; // Darker background
+    ctx.fillStyle = '#111';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     drawGrid(ctx);
   }, []);
@@ -70,7 +69,6 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
     saveHistory();
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
-
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     drawPixel(x, y);
@@ -80,7 +78,6 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
     if (!isDrawing) return;
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
-
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     drawPixel(x, y);
@@ -150,16 +147,20 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
 
   return (
     <div className="pixel-editor bg-opacity-80 backdrop-blur-lg border border-gray-700 p-6 rounded-2xl shadow-lg">
-      {/* Color Picker */}
+      {/* Color Palette */}
       <div className="mb-4 flex flex-wrap gap-3">
         {colors.map((color) => (
           <button
             key={color}
+            type="button" // Prevents default form submission
             className={`w-10 h-10 rounded-full border-2 transition-all ${
               color === currentColor ? 'ring-4 ring-white' : 'border-gray-600'
             }`}
             style={{ backgroundColor: color }}
-            onClick={() => setCurrentColor(color)}
+            onClick={(e) => {
+              e.preventDefault(); // Extra safety
+              setCurrentColor(color);
+            }}
           />
         ))}
       </div>
@@ -176,12 +177,12 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
         onMouseLeave={handleMouseUp}
       />
 
-      {/* Buttons */}
-      <div className="mt-4 flex gap-4">
-        <button onClick={handleUndo} className="neon-button bg-yellow-500">Undo</button>
-        <button onClick={handleRedo} className="neon-button bg-purple-500">Redo</button>
-        <button onClick={handleClear} className="neon-button bg-red-500">Clear</button>
-        <button onClick={handleSave} className="neon-button bg-green-500">Save</button>
+      {/* Controls */}
+      <div className="mt-4 flex flex-wrap gap-4">
+        <button type="button" onClick={handleUndo} className="neon-button bg-yellow-500">Undo</button>
+        <button type="button" onClick={handleRedo} className="neon-button bg-purple-500">Redo</button>
+        <button type="button" onClick={handleClear} className="neon-button bg-red-500">Clear</button>
+        <button type="button" onClick={handleSave} className="neon-button bg-green-500">Save</button>
       </div>
 
       <style jsx>{`
@@ -202,3 +203,4 @@ export function PixelEditor({ width, height, onSave }: PixelEditorProps) {
     </div>
   );
 }
+export default PixelEditor;
